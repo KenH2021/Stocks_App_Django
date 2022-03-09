@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+</br>
+</br>
+
+{% if ticker %}
+    {{ ticker }}
+{% endif %}
+
+{% if api %}
+    {% if api == "Error... " %}
+        There was a problem
+    {% else %}
+        <h1>{{ api.companyName}}</h1><br/>
+        Price: ${{ api.latestPrice }}<br/>
+        Previous Close: {{ api.previousClose }}<br/>
+        MarketCap: {{ api.marketCap }}<br/>
+
+        {% comment %} FOR LOOP EXAMPLE
+        {% for key, value in api.items %}
+            {{ key }}:{{ value }}</br>
+        {% endfor %} {% endcomment %}
+
+    {% endif %}
+{% endif %}
+
+{% endblock%}
